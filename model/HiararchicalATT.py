@@ -108,7 +108,7 @@ def _align_sent(input_matrix, sent_num, sent_max=None):
         temp_matrix = input_matrix[init_index:end_index, :].data      # To get one passage sentence embedding.
         if temp_matrix.shape[0] > max_len:
             temp_matrix = temp_matrix[:max_len]
-        new_matrix[index][-length:, :] = temp_matrix
+        new_matrix[index, -length:, :] = temp_matrix
 
         # update the init_index of the input matrix
         init_index = length
