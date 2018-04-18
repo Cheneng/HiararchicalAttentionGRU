@@ -1,5 +1,6 @@
 import torch
 
+
 def my_fn_align_sent(batch):
     # The return is [(data, labels, sent_num), (data, labels, sent_num)]
     batch_size = len(batch)
