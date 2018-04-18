@@ -3,7 +3,7 @@
 > This repo implements the *Hierarchical Attention Networks for Document Classification* in PyTorch
 
 
-<img src="./pictures/figure1.png" width="300" height="500">
+<img src="./pictures/figure1.png" width="600" height="700">
 
 You should rewrite the Dataset class in the data/dataset.py
 and put your data in '/data/train' or any other directory.
