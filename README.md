@@ -1,6 +1,6 @@
 # HiararchicalAttentionGRU
 
-> This repo implements the **
+> This repo implements the *Hierarchical Attention Networks for Document Classification* in PyTorch
 ![model_archi](./pictures/figure1.png)
 
 You should rewrite the Dataset class in the data/dataset.py
