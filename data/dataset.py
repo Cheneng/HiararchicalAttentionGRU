@@ -11,7 +11,9 @@ class TextDataset(data.Dataset):
     def __getitem__(self, index):
         # Rewrite the following code to get you own data.
         train_set, labels = pickle.load(open(self.file_name[index], 'rb'))
-        return train_set, labels, len(labels)
+
+        # Should return the training matrix, labels, and the sentence of the number in one document.
+        return train_set, labels, len(train_set)
 
     def __len__(self):
         return len(self.train_set)
