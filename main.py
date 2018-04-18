@@ -60,13 +60,13 @@ count = 0
 loss_sum = 0
 # Train the model
 for epoch in range(config.epoch):
-    for data, label in training_iter:
+    for data, label, sent_len in training_iter:
         if config.cuda and torch.cuda.is_available():
             data = data.cuda()
             labels = label.cuda()
 
         input_data = embeds(autograd.Variable(data))
-        out = model(data)
+        out = model(data, sent_len)
         loss = criterion(out, autograd.Variable(label.float()))
 
         loss_sum += loss.data[0]
