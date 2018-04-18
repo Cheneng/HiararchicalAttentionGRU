@@ -9,7 +9,9 @@ import torch.nn.functional as F
 from config import Config
 from model import HiararchicalDoc
 from data import TextDataset
+import helper
 import argparse
+
 
 torch.manual_seed(1)
 
@@ -43,6 +45,7 @@ training_set = TextDataset(path='data/train')
 
 training_iter = data.DataLoader(dataset=training_set,
                                 batch_size=config.batch_size,
+                                collate_fn=helper.my_fn_align_sent,
                                 num_workers=2)
 
 
