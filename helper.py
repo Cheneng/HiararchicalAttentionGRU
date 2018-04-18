@@ -11,4 +11,4 @@ def my_fn_align_sent(batch):
         data_batch.extend(minibatch[0])
         labels_batch.extend(minibatch[1])
         sent_num.extend(minibatch[2])
-    return torch.LongTensor(data_batch), torch.LongTensor(labels_batch), torch.LongTensor(sent_num)
+    return torch.FloatTensor(data_batch), torch.LongTensor(labels_batch), torch.LongTensor(sent_num)
