@@ -25,7 +25,6 @@ parser.add_argument('--label_num', type=int, default=2)
 parser.add_argument('--seed', type=int, default=1)
 args = parser.parse_args()
 
-
 torch.manual_seed(args.seed)
 
 if torch.cuda.is_available():
@@ -47,7 +46,6 @@ training_iter = data.DataLoader(dataset=training_set,
                                 batch_size=config.batch_size,
                                 collate_fn=helper.my_fn_align_sent,
                                 num_workers=2)
-
 
 model = HiararchicalDoc(config)
 embeds = nn.Embedding(config.word_num, config.word_embedding_dimension)
@@ -86,4 +84,3 @@ for epoch in range(config.epoch):
         optimizer.step()
     # save the model in every epoch
     model.save('checkpoints/epoch{}.ckpt'.format(epoch))
-
