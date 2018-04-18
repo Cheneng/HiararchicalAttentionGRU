@@ -88,7 +88,7 @@ def _align_sent(input_matrix, sent_num, sent_max=None):
         max_len (int): The maximum sentence number of the passage.
 
     Returns:
-        new_matrix (torch.FloatTensor): The aligned matrix, and its each row is one sentence in the passage.
+        new_matrix (torch.FloatTensor): The aligned matrix.
                                         [passage_num, max_len, embedding_size]
     """
     # assert isinstance(input_matrix, torch.autograd.Variable), 'The input object must be Variable'
