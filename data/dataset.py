@@ -12,7 +12,7 @@ class TextDataset(data.Dataset):
         # Rewrite the following code to get you own data.
         train_set, labels = pickle.load(open(self.file_name[index], 'rb'))
 
-        # Should return the training matrix, labels, and the sentence of the number in one document.
+        # Should return the training matrix, labels, and the number of the sentences in one document.
         return train_set, labels, len(train_set)
 
     def __len__(self):
