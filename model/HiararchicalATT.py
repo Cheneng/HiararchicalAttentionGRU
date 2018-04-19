@@ -88,7 +88,7 @@ def _align_sent(input_matrix, sent_num, sent_max=None):
         max_len (int): The maximum sentence number of the passage.
 
     Returns:
-        new_matrix (torch.FloatTensor): The aligned matrix.
+        new_matrix (torch.FloatTensor): The aligned matrix, and its each row is one sentence in the passage.
                                         [passage_num, max_len, embedding_size]
     """
     # assert isinstance(input_matrix, torch.autograd.Variable), 'The input object must be Variable'
@@ -99,18 +99,17 @@ def _align_sent(input_matrix, sent_num, sent_max=None):
         max_len = sent_max
     else:
         max_len = torch.max(sent_num)
-    new_matrix = torch.zeros(passage_num, max_len, embedding_size)
+    new_matrix = autograd.Variable(torch.zeros(passage_num, max_len, embedding_size))
     init_index = 0
     for index, length in enumerate(sent_num):
         end_index = init_index + length
 
         # temp_matrix
-        temp_matrix = input_matrix[init_index:end_index, :].data      # To get one passage sentence embedding.
+        temp_matrix = input_matrix[init_index:end_index, :]      # To get one passage sentence embedding.
         if temp_matrix.shape[0] > max_len:
             temp_matrix = temp_matrix[:max_len]
         new_matrix[index, -length:, :] = temp_matrix
 
         # update the init_index of the input matrix
         init_index = length
-    return torch.autograd.Variable(new_matrix)
-
+    return new_matrix
